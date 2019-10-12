@@ -1,174 +1,18 @@
 var express = require("express"),
-	bodyparser = require("body-parser");
+	bodyparser = require("body-parser"),
+	mongoose = require("mongoose");
 
+mongoose.connect("mongodb://localhost/hostel_app");
+var newuserschema = new mongoose.Schema({
+	room: String,
+	name: String,
+	roll: String,
+	username: String,
+	email: String,
+	password: String
+})
+var newuser = mongoose.model("newuser", newuserschema);
 
-
-var data =[
-	{
-		B1001:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1002:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1003:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1004:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1005:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1006:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1007:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1008:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1009:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1010:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		}
-	},
-	{
-		B1101:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1102:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1103:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1104:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1105:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1106:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1107:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1108:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1109:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		},
-		B1110:{
-			room:"",
-			name:"",
-			username: "",
-			roll:"",
-			email:"",
-			password:""
-		}
-	}
-];
 
 var app = express();
 app.use(bodyparser.urlencoded({extended: true}));
@@ -180,33 +24,81 @@ app.get("/", function(req, res){
 	res.render("intropage");
 })
 app.get("/homepage", function(req, res){
+	newuser.find({}, function(err, users){
+		if(err)
+			console.log(err)
+		else{
+			console.log(users)
+		}
+	})
 	res.render("homepage");
+})
+app.get("/mainpage", function(req, res){
+	res.render("main")
 })
 app.get("/login", function(req, res){
 	res.render("login");
+})
+app.post("/login", function(req, res){
+	var username = req.body.username;
+	var password = req.body.password;
+	var str = "";
+	newuser.find({}, function(err, user){
+		var count=0;
+		user.forEach(function(h){
+			if(h.username == username){
+				if(h.password == password){ 
+					res.redirect("/mainpage")
+					count+=1;
+				}
+
+			}
+		})
+		if(count ==0){
+			str += "password was incorrect..";
+			 res.redirect("/login");
+		}
+	})
 })
 app.get("/signup", function(req, res){
 	res.render("signup");
 })
 
-app.post("/hostelenrol", function(req, res){
+app.post("/signup", function(req, res){
 	var floor = req.body.floor;
 	var room = req.body.room;
-	// var obj = data[floor].room;
-	// console.log(data[0][room]['name']);
-	// console.log(room);
-	if(data[floor][room]['name'] == ""){
-		data[floor][room]['name'].value() = req.body.name;
-		data[floor][room]['roll'].value() = req.body.roll;
-		data[floor][room]['email'].value() = req.body.email;
-		data[floor][room]['room'].value() = req.body.room;
-		data[floor][room]['username'].value() = req.body.username;
-		data[floor][room]['password'].value() = req.body.password;
-
-	}
-	else{
-		res.send("This room is already taken");
-	}
+	console.log("entered post route")
+	var name = req.body.name;
+	var roll = req.body.roll;
+	var username = req.body.username;
+	var password = req.body.password;
+	var email = req.body.email;
+	var newcreate = {room: room, name: name, roll: roll, username: username, email: email, password: password};
+	var count =0;
+	newuser.find({},function(err, user){
+		var count=0;
+		user.forEach(function(h){
+			if(h.roll == roll)
+				count=1
+			else if(h.room == room)
+				count =2
+		})
+		if(count==0){
+			newuser.create(newcreate, function(err, newlycreated){
+				if(err)
+					console.log(err)
+				else
+					res.redirect("/mainpage")
+			})
+		}
+		else if(count==2){
+			res.send("this room is already taken")
+		}
+		else if(count ==1){
+			res.send("this account already exist")
+		}
+	})
+	
 })
 app.listen(3000, function(){
 	console.log("server started");

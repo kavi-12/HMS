@@ -1,16 +1,26 @@
 {
-  "name": "hostelmanagement",
+  "name": "hms",
   "version": "1.0.0",
-  "description": "hostel managemen in iiit allahabad",
+  "description": "Hostel management system containing the hostel allotment system and all the latest notifications required",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "vidur ganesh pratyush aman",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^2.7.1",
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1",
+    "mongoose": "^5.7.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kavi-12/HMS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kavi-12/HMS/issues"
+  },
+  "homepage": "https://github.com/kavi-12/HMS#readme"
 }

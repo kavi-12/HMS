@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap Basics</title>
+ 	<link rel="stylesheet" type="text/css" href="bootstrap.css"> 
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css"  href="HMS.css"> -->
+    <style>
+   /* body { background-color:orange;
+         color:white;
+	     background-image:url(background.png);
+	     background-repeat:repeat-x; 
+	     background-position: 10% 10px; 
+       } 
+   */
+
+   div .jumbotron
+   {
+       padding-top:10px;
+   }
+   div .container 
+   {
+       margin :0 37%; 
+       /* padding-top:00px; */
+       padding-bottom:10px; 
+       padding-right:800px;
+   }
+    </style>
+</head>
+<body>
+    <div class="HMS">
+<div class="container">
+	<div class="jumbotron">
+		<h1>Sign Up</h1>
+        <button class="btn btn-success btn-lg">IIITA HMS</button>
+        <!-- <img src="background.png" height="500"> -->
+	</div>
+     
+    <!-- <h1>Bootstrap Basics</h1> -->
+    <h1>Fill the details below</h1>
+	<!-- <button class="btn btn-danger btn-xs">CLICK ME!</button>
+	 -->
+
+	<a href="http://www.getbootstrap.com" class="btn btn-info btn-lg">Bootstrap Docs</a>
+ 
+    <form class="form-inline">
+            <div class="form-group">
+                    <label for="exampleInputname">First Name</label>
+                    <input type="name" class="form-control form-control-lg" id="exampleInputname" placeholder="Enter your First Name" required>
+               </div>
+               <div class="form-group">
+                 <label for="exampleInputname">Last Name</label>
+                 <input type="name" class="form-control form-control-lg" id="exampleInputname" placeholder="Enter your Last Name" required>    
+               </div>
+            
+          </form> 
+
+	<form>
+      <div class="form-group">
+           <label for="exampleInputname">First Name</label>
+           <input type="name" class="form-control form-control-lg" id="exampleInputname" placeholder="Enter your First Name" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputname">Last Name</label>
+        <input type="name" class="form-control form-control-lg" id="exampleInputname" placeholder="Enter your Last Name" required>    
+      </div>
+     
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Email address</label>
+	    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your college domain Email-ID" required>
+      </div>
+      
+	  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+      </div>
+      <div class="form-group">
+            <label for="exampleInputPassword1">Repeat Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repeat Password" required>
+          </div> 
+	  
+       <div class="form-group">
+            <label for="exampleInputHostelNumber">Hostel</label>
+            <!-- <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" 
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      Select Hostel
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                      <li><a href="#">BH-1</a></li>
+                      <li><a href="#">BH-2</a></li>
+                      <li><a href="#">BH-3</a></li>
+                      <li><a href="#">BH-4</a></li>
+                      <li><a href="#">BH-5</a></li>
+                      <li><a href="#">GH-1</a></li>
+                      <li><a href="#">GH-2</a></li>
+                      <li><a href="#">GH-3</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li><a href="#">Separated link</a></li>
+                    </ul>
+             </div> -->
+             <div class="custom-select" style="width:200px;">
+                    <select>
+                      <option value="0">Select Hostel:</option>
+                      <option value="1">BH-1</option>
+                      <option value="2">BH-2</option>
+                      <option value="3">BH-3</option>
+                      <option value="4">BH-4</option>
+                      <option value="5">Bh-5</option>
+                      <option value="6">GH-1</option>
+                      <option value="7">GH-2</option>
+                      <option value="8">GH-3</option>
+                    </select>
+                  </div>
+
+          
+           <input type="Hostel" class="form-control" id="exampleInputHostelNumber" placeholder="ex-BH-4" required>
+           
+     </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Image File</label>
+            <input type="file" id="exampleInputFile" required>
+            <p class="help-block">Example block-level help text .</p>
+        </div>
+     
+	  <div class="checkbox">
+	    <label>
+	      <input type="checkbox"> Check me out
+	    </label>
+	  </div>
+	  <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+    </form>
+    
+            
+            <button class="btn btn-success btn-lg">Submit</button>
+            <div class="dropdown-menu">
+  <form class="px-4 py-3">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="dropdownCheck">
+      <label class="form-check-label" for="dropdownCheck">
+        Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">New around here? Sign up</a>
+  <a class="dropdown-item" href="#">Forgot password?</a>
+</div>
+	
+</div>
+</div>
+
+      <!-- Surround the select box within a "custom-select" DIV element.
+Remember to set the width: -->
+
+</body>
+</html>

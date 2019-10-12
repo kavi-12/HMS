@@ -1,7 +1,8 @@
 var express = require("express"),
 	bodyparser = require("body-parser"),
 	mongoose = require("mongoose");
-
+var str = "";
+var currentuser = "";
 mongoose.connect("mongodb://localhost/hostel_app");
 var newuserschema = new mongoose.Schema({
 	room: String,
@@ -24,6 +25,7 @@ app.get("/", function(req, res){
 	res.render("intropage");
 })
 app.get("/homepage", function(req, res){
+	currentuser = "";
 	newuser.find({}, function(err, users){
 		if(err)
 			console.log(err)
@@ -34,33 +36,52 @@ app.get("/homepage", function(req, res){
 	res.render("homepage");
 })
 app.get("/mainpage", function(req, res){
-	res.render("main")
+	str = "";
+	res.render("main", {currentuser: currentuser})
+})
+app.get("/profile", function(req, res){
+	newuser.find({}, function(err, user){
+		if(err)
+			console.log(err)
+		else{
+			user.forEach(function(h){
+				if(h.name.toUpperCase() == currentuser){
+					res.render("profile", {currentuser: currentuser, usernamelatest: h.username, rolllatest: h.roll, emaillatest: h.email, roomlatest: h.room});
+				}
+			})
+		}
+	})
 })
 app.get("/login", function(req, res){
-	res.render("login");
+	//str = "";
+	currentuser = "";
+	res.render("login", {str: str});
 })
+
 app.post("/login", function(req, res){
 	var username = req.body.username;
 	var password = req.body.password;
-	var str = "";
 	newuser.find({}, function(err, user){
 		var count=0;
 		user.forEach(function(h){
 			if(h.username == username){
 				if(h.password == password){ 
+					str = "";
+					currentuser += h.name;
+					currentuser = currentuser.toUpperCase();
 					res.redirect("/mainpage")
 					count+=1;
 				}
-
 			}
 		})
 		if(count ==0){
-			str += "password was incorrect..";
+			str += "Password was incorrect..try again";
 			 res.redirect("/login");
 		}
 	})
 })
 app.get("/signup", function(req, res){
+	currentuser="";
 	res.render("signup");
 })
 

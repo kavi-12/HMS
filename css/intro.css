@@ -191,3 +191,31 @@ tr{
 .atag:hover{
     color:gray;
 }
+.profile{
+    border-bottom: 2px dashed gray;
+    margin-top: 120px;
+    margin-left: 20%;
+    margin-right: 50%;
+    width:60%;
+    height: 250px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.pic{
+    width: 30%;
+    border-radius: 100px;
+    height: 80%;
+    float:left;
+}
+.profilename{
+    font-family:"Josefin Sans";
+    margin-top: 60px;
+    margin-left: 50%;
+    padding-top: 10%;
+}
+
+.proinfo{
+    font-family:"Josefin Sans";
+    text-align: center;
+    margin-bottom: 90px;
+}

@@ -101,7 +101,7 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
 background: #4ECDC4;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #556270, #4ECDC4);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #556270, #4ECDC4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-border-radius: 20px;
+
 font-family: "Josefin Sans";
 }
 .Email{
@@ -109,7 +109,4 @@ margin-right: 10px;
 }
 #floor{
 margin-top: 10px;
-}
-.inp{
-    border-radius: 10px;
 }

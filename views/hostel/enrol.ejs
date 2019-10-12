@@ -1,0 +1,36 @@
+<% include ../headerfooter/header.ejs %>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Josefin+Sans:600&display=swap">
+ <div class="back">
+ <form class="fill_details jumbotron">
+ 	<div class="container" style="margin-left:15%">
+        <h2><strong>Fill all the details</strong></h2>
+        <div style="margin-top: 8px">
+        <strong>Floor no:</strong>
+            <input type="number" name="floor" class="inp" placeholder="Ground floor: 0 & First floor: 1" required>
+       </div>
+       <div style="margin-top: 8px">
+        <label for="room">Room No:</label>
+        <input id="room" class="inp" type="text" placeholder="B1XXX" required>
+        </div
+        <div style="margin-top: 8px">
+        <label for="name">Name:</label>
+        <input id="name" class="inp" type="text" placeholder="Name" required>
+        </div>
+        <div style="margin-top: 8px">
+        <label for="Email">Email:</label>
+        <input id="Email" class="inp" type="Email" name="Email" placeholder="example@iiita.ac.in" required>
+        </div>
+        <div style="margin-top: 8px">
+        <label for="Password">Password:</label>
+        <input id="Password" class="inp" type="Password" name="Password" minlength="5" maxlength="10" size="10" placeholder="Password" required>
+        
+        </div>
+
+        <button style="margin:10px" class="btn btn-lg btn-default btn-primary">Submit</button>
+        </div
+    </form>
+    
+</div>
+
+<% include ../headerfooter/footer.ejs %>

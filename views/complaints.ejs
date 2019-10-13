@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Main Page</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Josefin+Sans:600&display=swap">
+<link rel="stylesheet" type="text/css" href="intro.css">
+</head>
+<body>
+ 
+
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="navbar-brand" style="border-radius: 30px; background: #ADD100;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #7B920A, #ADD100);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #7B920A, #ADD100); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ color: black; margin-top:25px; margin-bottom: -25px; margin-left:0;">Hostel Management</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav ">
+        <li ><a href="/mainpage">Home</a></li>
+        <li><a href="#cont">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right ">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <%= currentuser %> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/profile">Profile  <i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li><a href="#">Notifications  <i class="fa fa-bell" aria-hidden="true"></i></a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/homepage">sign out  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+ </nav>
+ <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<div class="combox">
+<% complain.forEach(function(com){	%>
+			<strong> <%= com.name %> </strong> : <p> <%= com.complain %> </p>	
+<%      })     %>
+
+<form actioin="#" method="POST">
+	<div class="form-group">
+		<input class="comp" type = "text" name ="complains" placeholder = "Post all of your complains here..." required>
+	</div>
+	<div class="form-group">
+		<button style="margin-top:0; padding-top: 0; margin-left: 10px" class="btn btn-lg btn-default btn-primary">Submit </button>
+	</div>
+</form>
+</div>
+<div style="float: bottom;" class="contact" id="cont">
+    <div class="details">
+      <h4>Contact Info:</h4>
+      <div>mobile no - 7985256029</div>
+      <div>phone no - 2360164</div>
+      <div>email id - iec2018099@iiita.ac.in</div>
+    </div>
+  </div>
+
+ <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+ <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+ 
+</body>
+
+</html> 

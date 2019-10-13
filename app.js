@@ -2,6 +2,7 @@ var express = require("express"),
 	bodyparser = require("body-parser"),
 	mongoose = require("mongoose");
 var str = "";
+var stat = "";
 var currentuser = "";
 mongoose.connect("mongodb://localhost/hostel_app");
 var newuserschema = new mongoose.Schema({
@@ -12,8 +13,14 @@ var newuserschema = new mongoose.Schema({
 	email: String,
 	password: String
 })
-var newuser = mongoose.model("newuser", newuserschema);
 
+var complainSchema = new mongoose.Schema({
+	name: String,
+	complain: String
+})
+
+var newuser = mongoose.model("newuser", newuserschema);
+var complain = mongoose.model("complain", complainSchema);
 
 var app = express();
 app.use(bodyparser.urlencoded({extended: true}));
@@ -34,6 +41,24 @@ app.get("/homepage", function(req, res){
 		}
 	})
 	res.render("homepage");
+})
+app.get("/complain", function(req, res){
+	console.log(currentuser)
+	complain.find({}, function(err, com){
+		if(err)
+			console.log(err)
+		else
+			res.render("complaints", {complain: com, currentuser:currentuser})
+	})
+})
+app.post("/complain", function(req, res){
+	var name = currentuser;
+	var co = req.body.complains;
+	var obj = {name: name, complain: co};
+	complain.create(obj, function(err, j){
+			res.redirect("/complain")
+		
+	})
 })
 app.get("/mainpage", function(req, res){
 	str = "";
@@ -82,7 +107,7 @@ app.post("/login", function(req, res){
 })
 app.get("/signup", function(req, res){
 	currentuser="";
-	res.render("signup");
+	res.render("signup", {stat: stat});
 })
 
 app.post("/signup", function(req, res){
@@ -99,24 +124,33 @@ app.post("/signup", function(req, res){
 	newuser.find({},function(err, user){
 		var count=0;
 		user.forEach(function(h){
-			if(h.roll == roll)
+			if(h.roll == roll){
 				count=1
-			else if(h.room == room)
+			}
+			else if(h.room == room){
 				count =2
+			}
 		})
 		if(count==0){
 			newuser.create(newcreate, function(err, newlycreated){
 				if(err)
 					console.log(err)
-				else
+				else{
+					currentuser += name;
+					stat = ""
 					res.redirect("/mainpage")
+				}
 			})
 		}
 		else if(count==2){
-			res.send("this room is already taken")
+			stat = ""
+			stat+="this room is already taken";
+			res.redirect("/signup")
 		}
 		else if(count ==1){
-			res.send("this account already exist")
+			stat = ""
+			stat +="this account already exist"
+			res.redirect("/signup")
 		}
 	})
 	
